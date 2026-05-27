@@ -9,4 +9,7 @@ module.exports = {
       tsconfig: 'tsconfig.json',
     }],
   },
+  moduleNameMapper: {
+    '^uuid$': 'uuid',
+  },
 };
