@@ -17,7 +17,11 @@ This file is the immutable, machine-readable chronologue of all AI actions for t
 - **Core Decision:** TypeScript/Node.js selected as the primary stack (ADR-001).
 - **Verification Mandate:** TDD, McCabe < 10, Result Pattern error handling.
 
-### 4. Phase 2: Calendar Bounded Context - TimeSpan Logic
-- **Issue:** Created issue #1 ("feat(calendar): implement core TimeSpan validation").
-- **Branch:** Switched to `feature/1-calendar-timespan`.
-- **Status:** Initializing TDD cycle for Domain Value Object.
+### 4. Phase 2: Calendar Bounded Context - TimeSpan & CalendarEvent
+- **Issue:** Resolved #1.
+- **Branch:** `feature/1-calendar-timespan`.
+- **Status:** Verified via TDD and Mutation Testing.
+- **Implementation:** 
+  - `src/domain/calendar/TimeSpan.ts` (89.5% mutation score).
+  - `src/domain/calendar/CalendarEvent.ts` (90.5% mutation score).
+- **Architectural Proof:** Aggregate Root pattern established with strongly typed IDs and "Parse, Don't Validate" title VO.
