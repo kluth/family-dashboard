@@ -84,11 +84,13 @@ describe('ConflictDetector Domain Service', () => {
             { minLength: 0, maxLength: 50 }
           ),
           (rawEvents) => {
-            const events = rawEvents.map(re => {
-              const start = re.start;
-              const end = new Date(start.getTime() + re.duration * 60000);
-              return createEvent(re.id, start, end);
-            });
+            const events = rawEvents
+              .filter(re => !isNaN(re.start.getTime()))
+              .map(re => {
+                const start = re.start;
+                const end = new Date(start.getTime() + re.duration * 60000);
+                return createEvent(re.id, start, end);
+              });
 
             const conflicts = ConflictDetector.detectConflicts(events);
 

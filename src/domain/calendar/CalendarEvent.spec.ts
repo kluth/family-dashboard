@@ -22,7 +22,7 @@ describe('CalendarEvent Bounded Context', () => {
       const result = EventId.create('invalid-uuid');
       expect(result.isErr()).toBe(true);
       if (result.isErr()) {
-        expect(result.error.message).toBe("Invalid EventId: must be a valid UUID");
+        expect(result.error.message).toBe("Invalid UniqueId: must be a valid UUID");
       }
     });
   });

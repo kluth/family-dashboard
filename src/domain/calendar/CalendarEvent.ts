@@ -1,21 +1,15 @@
 import { z } from 'zod';
 import { Result, ok, err } from 'neverthrow';
 import { TimeSpan } from './TimeSpan';
+import { UniqueId } from '../shared/UniqueId';
 
 /**
  * EventId Value Object
  */
-const IdSchema = z.string().uuid();
-
-export class EventId {
-  private constructor(public readonly value: string) {}
-
-  public static create(value: string): Result<EventId, Error> {
-    const result = IdSchema.safeParse(value);
-    if (!result.success) {
-      return err(new Error("Invalid EventId: must be a valid UUID"));
-    }
-    return ok(new EventId(result.data));
+export class EventId extends UniqueId {
+  public static override create(value: string): Result<EventId, Error> {
+    const result = super.create(value);
+    return result.map((id) => new EventId(id.value));
   }
 }
 

@@ -23,9 +23,11 @@ export class ConflictDetector {
 
     for (let i = 0; i < sortedEvents.length; i++) {
       const current = sortedEvents[i];
+      if (!current) continue;
       
       for (let j = i + 1; j < sortedEvents.length; j++) {
         const next = sortedEvents[j];
+        if (!next) continue;
         
         // If the next event starts after the current event ends, no more overlaps are possible for the current event.
         if (next.timeSpan.start >= current.timeSpan.end) {
